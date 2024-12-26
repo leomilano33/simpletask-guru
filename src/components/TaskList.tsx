@@ -25,11 +25,16 @@ const TaskList = ({ tasks, onComplete, onDelete, onEdit }: TaskListProps) => {
     toast({
       title: "Task completed",
       description: "Great job! Keep up the good work!",
+      duration: 3000,
     });
   };
 
   return (
-    <div className="space-y-3">
+    <div 
+      className="space-y-3"
+      role="list"
+      aria-label="Task list"
+    >
       {tasks.map((task) => (
         <TaskItem
           key={task.id}
@@ -40,7 +45,11 @@ const TaskList = ({ tasks, onComplete, onDelete, onEdit }: TaskListProps) => {
         />
       ))}
       {tasks.length === 0 && (
-        <div className="text-center py-8 text-muted-foreground">
+        <div 
+          className="text-center py-8 text-muted-foreground"
+          role="status"
+          aria-label="No tasks available"
+        >
           No tasks yet. Add your first task above!
         </div>
       )}

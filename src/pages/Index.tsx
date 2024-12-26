@@ -47,25 +47,43 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background p-4 sm:p-8">
       <div className="max-w-2xl mx-auto space-y-8">
-        <div className="space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight">Tasks</h1>
-          <p className="text-muted-foreground">
+        <header className="space-y-2">
+          <h1 
+            className="text-4xl font-bold tracking-tight animate-fade-in"
+            role="heading"
+            aria-level={1}
+          >
+            Tasks
+          </h1>
+          <p className="text-muted-foreground animate-fade-in">
             Manage your tasks and stay organized.
           </p>
-        </div>
+        </header>
         
-        <TaskForm
-          onSubmit={editingTask ? updateTask : addTask}
-          editingTask={editingTask || undefined}
-          onCancel={() => setEditingTask(null)}
-        />
+        <main className="space-y-8">
+          <section 
+            aria-label="Task form"
+            className="animate-fade-in"
+          >
+            <TaskForm
+              onSubmit={editingTask ? updateTask : addTask}
+              editingTask={editingTask || undefined}
+              onCancel={() => setEditingTask(null)}
+            />
+          </section>
 
-        <TaskList
-          tasks={tasks}
-          onComplete={completeTask}
-          onDelete={deleteTask}
-          onEdit={startEditing}
-        />
+          <section 
+            aria-label="Task list"
+            className="animate-fade-in"
+          >
+            <TaskList
+              tasks={tasks}
+              onComplete={completeTask}
+              onDelete={deleteTask}
+              onEdit={startEditing}
+            />
+          </section>
+        </main>
       </div>
     </div>
   );
